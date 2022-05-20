@@ -38,7 +38,10 @@ export const ButtonStyle = styled('button', {
       default: {},
       outline: {},
       tag: {},
-      link: {},
+      link: {
+        minWidth: 'min-content',
+        padding: '0 6px',
+      },
     },
     disabled: {
       true: {

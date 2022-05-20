@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { ColorType, CSS } from 'styles/stitches.config';
 
 import Loading from 'Components/Atoms/Loading';
@@ -15,6 +15,8 @@ interface ButtonProps extends ButtonVariants {
   loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   css?: CSS;
+  style?: CSSProperties;
+  className?: string;
 }
 
 const Button = ({
@@ -26,10 +28,11 @@ const Button = ({
   rounded = false,
   variant = 'default',
   fontWeight = 'bold',
-  margin = 'inherit',
-  color = '$white',
-  bgColor = '$primary',
+  margin = 'initial',
+  color = variant === 'link' ? '$primary' : '$white',
+  bgColor = variant === 'link' ? '$transparent' : '$primary',
   css = {},
+  ...restProps
 }: ButtonProps) => {
   return (
     <ButtonStyle
@@ -46,6 +49,7 @@ const Button = ({
         background: bgColor,
         ...css,
       }}
+      {...restProps}
     >
       {loading && <Loading size="1.2rem" right={7} />}
       {children}

@@ -7,19 +7,17 @@ interface BaseProps {
   fontSize?: string;
   fontStyle?: string;
   lineHeight?: string;
-  fontWeight?: string;
+  fontWeight?: string | number;
   textTransform?: 'uppercase' | 'lowercase' | 'capitalize' | 'none';
 }
 
 interface TextProps extends BaseProps {
   children?: ReactNode;
   htmlTag?: 'p' | 'div' | 'span' | 'b';
-  fontSize?: string;
   color?: ColorType;
   margin?: string | number;
-  lineHeight?: string;
   letterSpacing?: string;
-  fontWeight?: string;
+  align?: 'left' | 'center' | 'right' | 'justify';
   fontStyle?: 'normal' | 'italic';
   css?: CSS;
 }
@@ -35,6 +33,7 @@ const Text = ({
   fontSize = '1rem',
   lineHeight = '1.625',
   color = '$text',
+  align = 'left',
   css = {},
 }: TextProps) => {
   return (
@@ -49,6 +48,7 @@ const Text = ({
         fontStyle,
         letterSpacing,
         fontWeight,
+        textAlign: align,
         ...css,
       }}
     >

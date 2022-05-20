@@ -3,30 +3,35 @@ import { ColorType, CSS } from 'styles/stitches.config';
 
 import { TitleStyle } from './style';
 
+type TextTransformType = 'uppercase' | 'lowercase' | 'capitalize' | 'none';
+
 interface BaseProps {
-  fontSize?: string;
+  fontSize?: string | number;
   fontStyle?: string;
-  lineHeight?: string;
+  lineHeight?: string | number;
   fontWeight?: string;
-  textTransform?: 'uppercase' | 'lowercase' | 'capitalize' | 'none';
+  textTransform?: TextTransformType;
 }
 
 interface TitleProps extends BaseProps {
   children?: ReactNode;
   htmlTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  fontSize?: string;
   color?: ColorType;
   margin?: string;
-  lineHeight?: string;
   letterSpacing?: string;
   fontWeight?: string;
   fontStyle?: 'normal' | 'italic';
   css?: CSS;
+  mobileSettings?: {
+    fontSize?: string | number;
+    lineHeight?: string | number;
+    textTransform?: TextTransformType;
+  };
 }
 
 const Title = ({
   children,
-  fontStyle,
+  fontStyle = 'normal',
   htmlTag = 'h2',
   letterSpacing = '-0.005em',
   fontWeight = 'bold',
@@ -36,21 +41,34 @@ const Title = ({
   lineHeight = '1.5',
   color = '$text',
   css = {},
+  mobileSettings = {
+    fontSize,
+    lineHeight,
+    textTransform,
+  },
+  ...restProps
 }: TitleProps) => {
   return (
     <TitleStyle
       as={htmlTag}
       css={{
         color,
-        fontSize,
         margin,
-        lineHeight,
-        textTransform,
         fontStyle,
         letterSpacing,
         fontWeight,
+        fontSize: mobileSettings?.fontSize ?? fontSize,
+        textTransform: mobileSettings?.textTransform ?? textTransform,
+        lineHeight: mobileSettings?.lineHeight ?? lineHeight,
+
+        '@tablet': {
+          fontSize,
+          lineHeight,
+          textTransform,
+        },
         ...css,
       }}
+      {...restProps}
     >
       {children}
     </TitleStyle>

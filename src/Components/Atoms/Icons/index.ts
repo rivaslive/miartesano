@@ -1,0 +1,9 @@
+export { default as AveFilled } from './AveFilled';
+export { default as InstagramFilled } from './InstagramFilled';
+export { default as NightFilled } from './NightFilled';
+export { default as TwitterFilled } from './TwitterFilled';
+export { default as FacebookFilled } from './FacebookFilled';
+export { default as HeadPhoneFilled } from './HeadPhoneFilled';
+export { default as ProfileFilled } from './ProfileFilled';
+export { default as HeartFilled } from './HeartFilled';
+export { default as ShopFilled } from './ShopFilled';

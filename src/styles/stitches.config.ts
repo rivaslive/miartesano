@@ -19,6 +19,9 @@ export type ColorType =
   | '$secondaryOpacity'
   | '$errorOpacity'
   | '$subText'
+  | '$bgText'
+  | '$gray1'
+  | '$yellow2'
   | '$bgCard';
 
 const colors = {
@@ -31,25 +34,45 @@ const colors = {
   purple: '#7928ca',
   success: '#17c964',
   warning: '#f5a623',
+  yellow2: '#F2C94C',
   error: '#f21361',
-  primary: '$indigo',
+  primary: '#518AE3',
   secondary: '$purple',
   icon: '#BBBBBB',
   primaryOpacity: '#DEEBFF',
   secondaryOpacity: '#DBC8F0',
   errorOpacity: '#FFC3D8',
   subText: '#707070',
+  gray1: '#333333',
   bgCard: '#F9F9FA',
+  bgText: 'rgba(234, 234, 234, 0.7)',
 };
 
 export const { styled, getCssText, createTheme, globalCss, config } =
   createStitches({
+    media: {
+      tablet: '(min-width: 992px)',
+      desktop: '(min-width: 1200px)',
+      bigDesktop: '(min-width: 1400px)',
+    },
     theme: {
       colors,
-      media: {
-        tablet: '(min-width: 768px)',
-        desktop: '(min-width: 1024px)',
-        bigDesktop: '(min-width: 1400px)',
+      zIndex: {
+        min: -1,
+        one: 1,
+        two: 2,
+        three: 3,
+        four: 4,
+        five: 5,
+        max: 100,
+      },
+      borderRadius: {
+        default: '8px',
+        xs: '6px',
+        sm: '8px',
+        lg: '12px',
+        xl: '22px',
+        max: '24px',
       },
     },
   });
@@ -69,6 +92,9 @@ export const darkTheme = createTheme({
 export type CSS = Stitches.CSS<typeof config>;
 
 const GlobalStyles = globalCss({
+  a: {
+    textDecoration: 'none',
+  },
   '@font-face': [
     {
       fontFamily: 'Inter',
@@ -122,6 +148,11 @@ const GlobalStyles = globalCss({
       fontFamily: 'Inter',
       src: 'url("/fonts/Inter/Inter-Thin.ttf") format("opentype")',
       fontWeight: 100,
+      fontStyle: 'normal',
+    },
+    {
+      fontFamily: 'Aladin',
+      src: 'url("/fonts/Aladin/Aladin-Regular.ttf") format("opentype")',
       fontStyle: 'normal',
     },
   ],

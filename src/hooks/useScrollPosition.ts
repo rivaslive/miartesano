@@ -19,7 +19,7 @@ const useScrollPosition = () => {
   }, []);
 
   const detached = useMemo(() => {
-    return scrollPosition > 0;
+    return scrollPosition > 60;
   }, [scrollPosition]);
 
   return {

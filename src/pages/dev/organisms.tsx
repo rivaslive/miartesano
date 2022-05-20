@@ -1,18 +1,17 @@
 import type { NextPage } from 'next';
-import Navbar from 'Components/Organism/Navbar';
+import Layout from 'Components/Organism/Layout';
 
 const Organisms: NextPage = () => {
   return (
-    <div className="container">
-      <Navbar />
-
+    <Layout>
       <div style={{ minHeight: '300vh' }}>
         <img
+          width="100%"
           src="https://design4users.com/wp-content/uploads/2019/02/ecommerce-app-designs.png"
           alt=""
         />
       </div>
-    </div>
+    </Layout>
   );
 };
 
