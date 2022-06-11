@@ -52,6 +52,7 @@ module.exports = {
     'react/no-danger': 'off',
     'react/prop-types': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
+    'no-console': 'off',
     'no-nested-ternary': 'off',
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/naming-convention': 'off',

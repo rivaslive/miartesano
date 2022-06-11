@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Layout from 'Components/Organism/Layout';
+import Layout from 'components/Organism/Layout';
 
 const Organisms: NextPage = () => {
   return (

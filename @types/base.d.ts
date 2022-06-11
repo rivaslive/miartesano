@@ -6,3 +6,5 @@ declare type BaseComponent = {
   id?: string;
   css?: CSS;
 };
+
+declare type AlignType = 'left' | 'right' | 'center' | 'justify';

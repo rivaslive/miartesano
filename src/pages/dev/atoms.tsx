@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import Text from 'Components/Atoms/Text';
-import Title from 'Components/Atoms/Title';
-import Button from 'Components/Atoms/Button';
-import Space from 'Components/Atoms/Space';
+import Text from 'components/Atoms/Text';
+import Title from 'components/Atoms/Title';
+import Button from 'components/Atoms/Button';
+import Space from 'components/Atoms/Space';
 
 const Atoms: NextPage = () => {
   return (

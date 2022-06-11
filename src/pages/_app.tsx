@@ -1,10 +1,16 @@
+import 'styles/grid.css';
 import React from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
+import { ApolloProvider } from '@apollo/client';
+
+import { useApollo } from 'apollo';
 import { darkTheme } from 'styles/stitches.config';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const client = useApollo(pageProps.initialApolloState);
+
   return (
     <>
       <Head>
@@ -14,16 +20,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>Mi Artesano</title>
       </Head>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="light"
-        value={{
-          light: 'light',
-          dark: darkTheme.className,
-        }}
-      >
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <ApolloProvider client={client}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          value={{
+            light: 'light',
+            dark: darkTheme.className,
+          }}
+        >
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </ApolloProvider>
     </>
   );
 }

@@ -1,29 +1,6 @@
 import { createStitches } from '@stitches/react';
 import type * as Stitches from '@stitches/react';
 
-export type ColorType =
-  | '$white'
-  | '$black'
-  | '$transparent'
-  | '$text'
-  | '$background'
-  | '$indigo'
-  | '$purple'
-  | '$success'
-  | '$warning'
-  | '$error'
-  | '$primary'
-  | '$secondary'
-  | '$icon'
-  | '$primaryOpacity'
-  | '$secondaryOpacity'
-  | '$errorOpacity'
-  | '$subText'
-  | '$bgText'
-  | '$gray1'
-  | '$yellow2'
-  | '$bgCard';
-
 const colors = {
   white: '#ffffff',
   black: '#000000',
@@ -46,17 +23,34 @@ const colors = {
   gray1: '#333333',
   bgCard: '#F9F9FA',
   bgText: 'rgba(234, 234, 234, 0.7)',
+  borderColor: '$gray1',
+  boxInputShadow: '#DFE3E6',
 };
+
+const shadows = {
+  boxInputShadow: '0 0 0 2px #DFE3E6',
+};
+
+type addPrefixToObject<
+  TObject extends object,
+  TPrefix extends string
+  // @ts-ignore
+> = `${TPrefix}${keyof TObject}`;
+
+// add $ prefix all key object example = '$text' | '$black' | '$white' ...
+export type ColorType = addPrefixToObject<typeof colors, '$'>;
 
 export const { styled, getCssText, createTheme, globalCss, config } =
   createStitches({
     media: {
+      mobile: '(min-width: 575px)',
       tablet: '(min-width: 992px)',
       desktop: '(min-width: 1200px)',
       bigDesktop: '(min-width: 1400px)',
     },
     theme: {
       colors,
+      shadows,
       zIndex: {
         min: -1,
         one: 1,
@@ -94,6 +88,11 @@ export type CSS = Stitches.CSS<typeof config>;
 const GlobalStyles = globalCss({
   a: {
     textDecoration: 'none',
+    color: '$primary',
+
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   '@font-face': [
     {
